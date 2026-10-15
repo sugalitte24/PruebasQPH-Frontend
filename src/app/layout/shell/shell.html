@@ -1,0 +1,39 @@
+<header class="topbar">
+  <div class="brand">
+    <div class="logo-mark"><i class="pi pi-box"></i></div>
+    <span>ProductHub</span>
+  </div>
+
+  <nav class="nav">
+    <a routerLink="/products" routerLinkActive="active">
+      <i class="pi pi-box"></i> Productos
+    </a>
+    <a routerLink="/sales" routerLinkActive="active">
+      <i class="pi pi-shopping-bag"></i> Ventas
+    </a>
+    @if (isAdmin) {
+      <a routerLink="/users" routerLinkActive="active">
+        <i class="pi pi-users"></i> Usuarios
+      </a>
+    }
+  </nav>
+
+  <div class="user-box">
+    <div class="user-info">
+      <span class="username">{{ username }}</span>
+      <span class="role">{{ role }}</span>
+    </div>
+    <p-button
+      icon="pi pi-sign-out"
+      [text]="true"
+      severity="secondary"
+      pTooltip="Cerrar sesión"
+      tooltipPosition="bottom"
+      (onClick)="logout()"
+    />
+  </div>
+</header>
+
+<main>
+  <router-outlet />
+</main>

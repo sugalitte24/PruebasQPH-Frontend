@@ -1,0 +1,77 @@
+<div class="app-page">
+  <p-toast />
+
+  <div class="page-header">
+    <div class="header-icon"><i class="pi pi-shopping-bag"></i></div>
+    <div>
+      <h1>Historial de ventas</h1>
+      <p>{{ isAdmin ? 'Todas las ventas registradas' : 'Ventas registradas por ti' }}</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="card stat">
+      <span class="card-title">Ventas</span>
+      <strong>{{ sales().length }}</strong>
+    </div>
+    <div class="card stat">
+      <span class="card-title">Unidades vendidas</span>
+      <strong>{{ unidadesVendidas() }}</strong>
+    </div>
+    <div class="card stat">
+      <span class="card-title">Total vendido</span>
+      <strong class="gold">{{ totalVendido() | currency:'USD' }}</strong>
+    </div>
+  </div>
+
+  <div class="card">
+    <p-table
+      [value]="sales()"
+      [loading]="loading()"
+      [paginator]="true"
+      [rows]="10"
+      [rowsPerPageOptions]="[5, 10, 20]"
+      [tableStyle]="{ 'min-width': '52rem' }"
+      [rowHover]="true"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 130px">Factura</th>
+          <th pSortableColumn="createdAt" style="width: 180px">Fecha <p-sortIcon field="createdAt" /></th>
+          <th pSortableColumn="username" style="width: 150px">Vendedor <p-sortIcon field="username" /></th>
+          <th>Productos</th>
+          <th pSortableColumn="total" style="width: 150px; text-align: right">Total <p-sortIcon field="total" /></th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-sale>
+        <tr>
+          <td><span class="invoice">#{{ shortInvoice(sale) }}</span></td>
+          <td>{{ sale.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td><i class="pi pi-user muted"></i> {{ sale.username }}</td>
+          <td>
+            @for (item of sale.items; track item.productId) {
+              <div class="item">
+                <span class="qty">{{ item.quantity }} ×</span>
+                {{ item.productName }}
+                <span class="muted">({{ item.unitPrice | currency:'USD' }})</span>
+              </div>
+            }
+          </td>
+          <td class="total">{{ sale.total | currency:'USD' }}</td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">
+            <div class="empty-state">
+              <i class="pi pi-inbox"></i>
+              <span>Aún no hay ventas registradas</span>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

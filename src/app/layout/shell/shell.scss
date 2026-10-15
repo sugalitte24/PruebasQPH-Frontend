@@ -1,0 +1,92 @@
+@use '../../../styles/theme' as *;
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: $topbar-height;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0 3rem;
+  background: $ink-soft;
+  border-bottom: 1px solid $gold-dim;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  .logo-mark {
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid $gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i { font-size: 0.85rem; color: $gold; }
+  }
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $cream;
+  }
+}
+
+.nav {
+  display: flex;
+  height: 100%;
+  gap: 0.5rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    color: $muted-lite;
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+
+    i { font-size: 0.8rem; }
+
+    &:hover { color: $cream; }
+
+    &.active {
+      color: $gold;
+      border-bottom-color: $gold;
+    }
+  }
+}
+
+.user-box {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.2;
+  }
+
+  .username { color: $cream; font-size: 0.82rem; }
+  .role { color: $gold; font-size: 0.6rem; letter-spacing: 0.18em; }
+}
+
+@media (max-width: 768px) {
+  .topbar { padding: 0 1rem; gap: 1rem; }
+  .brand span, .user-info { display: none; }
+  .nav a { padding: 0 0.5rem; font-size: 0.62rem; }
+}

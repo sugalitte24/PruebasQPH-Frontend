@@ -1,0 +1,48 @@
+@use '../../../../styles/theme' as *;
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: $cream;
+  }
+
+  .gold { color: $gold-light; }
+}
+
+.invoice {
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: $gold;
+  letter-spacing: 0.05em;
+}
+
+.item + .item { margin-top: 0.25rem; }
+
+.qty {
+  color: $gold;
+  font-weight: 500;
+}
+
+.total {
+  text-align: right;
+  font-family: 'Playfair Display', serif;
+  color: $gold-light;
+  font-size: 0.95rem;
+}

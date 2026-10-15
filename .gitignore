@@ -26,3 +26,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.editorconfig
+.prettierrc
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/mcp.json
+.vscode/tasks.json

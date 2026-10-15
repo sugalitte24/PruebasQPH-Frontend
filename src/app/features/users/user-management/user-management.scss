@@ -1,0 +1,28 @@
+@use '../../../../styles/theme' as *;
+
+.layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-card {
+  padding: 1.75rem;
+
+  .card-title {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid $gold-dim;
+  }
+}
+
+.username {
+  font-family: monospace;
+  color: $gold;
+  font-size: 0.82rem;
+}
